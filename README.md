@@ -1,27 +1,27 @@
-# my-component-doc
+# my-component
 
 ## Getting Started
 
 Install dependencies,
 
 ```bash
-$ npm i
+$ yarn
 ```
 
 Start the dev server,
 
 ```bash
-$ npm start
+$ yarn start
 ```
 
-Build documentation,
+<!-- Build documentation, -->
 
-```bash
+<!-- ```bash
 $ npm run docs:build
-```
+``` -->
 
-Build library via `father-build`,
+<!-- Build library via `father-build`, -->
 
-```bash
+<!-- ```bash
 $ npm run build
-```
+``` -->
