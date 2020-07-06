@@ -1,0 +1,24 @@
+.row-item {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  &-border {
+    border-bottom: 1px solid #eee;
+  }
+  &-label {
+    flex-basis: 20%;
+    &-left {
+      text-align: left;
+    }
+    &-center {
+      text-align: center;
+    }
+    &-right {
+      text-align: right;
+    }
+  }
+  &-content {
+    flex: 0 1 80%;
+    padding-left: 4px;
+  }
+}
