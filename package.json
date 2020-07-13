@@ -27,6 +27,7 @@
       "prettier --parser=typescript --write"
     ]
   },
+  "publishConfig": {"registry": "https://npm.pkg.github.com/"},
   "dependencies": {
     "@types/classnames": "^2.2.10",
     "antd": "^4.4.1",
