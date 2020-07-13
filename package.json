@@ -1,7 +1,7 @@
 {
-  "private": true,
   "name": "my-component-doc",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
