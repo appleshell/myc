@@ -1,3 +1,9 @@
+---
+group:
+  title: Components
+  path: /components
+---
+
 ## Foo
 
 Demo:
