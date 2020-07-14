@@ -1,3 +1,5 @@
+const env = process.env.BABEL_ENV;
+
 module.exports = {
   presets: [
     [
@@ -5,7 +7,7 @@ module.exports = {
       {
         bugfixes: true,
         // modules: 'cjs',
-        modules: false,
+        modules: env === 'es' ? false : 'auto',
       },
     ],
     '@babel/preset-react',
