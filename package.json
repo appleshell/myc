@@ -1,14 +1,14 @@
 {
   "name": "my-component-doc",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
     "build:all":"yarn clean && yarn build:cjs && yarn build:es && yarn build:cp",
-    "build:cjs": "cross-env babel src --out-dir lib --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\"",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\"",
+    "build:cjs": "cross-env babel --config-file ./.babelrc.js src --out-dir lib --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir lib",
+    "build:es": "cross-env BABEL_ENV=es babel --config-file ./.babelrc.js src --out-dir es --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir es",
     "build:cp": "cpy **/*.scss ../lib --cwd=src --parents && cpy **/*.scss ../es --cwd=src --parents ",
     "clean": "rimraf lib && rimraf es",
     "deploy": "npm run docs:build && npm run docs:deploy",
@@ -40,10 +40,13 @@
   },
   "dependencies": {
     "@types/classnames": "^2.2.10",
-    "antd": "^4.4.1",
     "classnames": "^2.2.6",
-    "cross-env": "^7.0.2",
-    "react": "^16.12.0"
+    "cross-env": "^7.0.2"
+  },
+  "peerDependencies": {
+    "antd": ">=4.0.0",
+    "react": ">=16.9.0",
+    "moment": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
@@ -66,5 +69,8 @@
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "yorkie": "^2.0.0"
+  },
+  "resolutions": {
+    "remark": "12"
   }
 }
