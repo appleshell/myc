@@ -6,7 +6,7 @@
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
-    "build:all":"yarn clean && yarn build:cjs && yarn build:es && yarn build:cp",
+    "build:all": "yarn clean && yarn build:cjs && yarn build:es && yarn build:cp",
     "build:cjs": "cross-env babel --config-file ./.babelrc.js src --out-dir lib --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir lib",
     "build:es": "cross-env BABEL_ENV=es babel --config-file ./.babelrc.js src --out-dir es --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir es",
     "build:cp": "cpy **/*.scss ../lib --cwd=src --parents && cpy **/*.scss ../es --cwd=src --parents ",
@@ -45,14 +45,15 @@
   },
   "peerDependencies": {
     "antd": ">=4.0.0",
-    "react": ">=16.9.0",
-    "moment": "*"
+    "moment": "*",
+    "react": ">=16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
@@ -61,6 +62,7 @@
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
     "babel-loader": "^8.1.0",
+    "conventional-changelog": "^3.1.21",
     "cpy-cli": "^3.1.1",
     "dumi": "^1.0.9",
     "father-build": "^1.17.2",
