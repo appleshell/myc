@@ -7,3 +7,5 @@ group:
 ## useWindowSize
 
 ### 使用
+
+<code src="./demo/base.tsx" />
