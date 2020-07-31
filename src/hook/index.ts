@@ -6,10 +6,12 @@
 
 import useEffectOnce from './useEffectOnce';
 import useMount from './useMount';
+import useUpdate from './useUpdate';
 import useWindowSize from './useWindowSize';
 
 export default {
   useEffectOnce,
   useMount,
+  useUpdate,
   useWindowSize,
 };

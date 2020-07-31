@@ -22,6 +22,6 @@ jobs:
         run: |
           yarn build:all
 
-      - name: Publish
-        run: |
-          npm publish
+      # - name: Publish
+      #   run: |
+      #     npm publish

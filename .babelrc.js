@@ -19,6 +19,7 @@ module.exports = {
       {
         useESModules: false,
       },
+      '@babel/plugin-proposal-numeric-separator',
     ],
   ],
 };
