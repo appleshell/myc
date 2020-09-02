@@ -19,7 +19,8 @@ module.exports = {
       {
         useESModules: false,
       },
-      '@babel/plugin-proposal-numeric-separator',
     ],
+    '@babel/plugin-proposal-numeric-separator',
+    '@babel/plugin-syntax-numeric-separator',
   ],
 };

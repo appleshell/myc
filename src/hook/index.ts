@@ -7,6 +7,7 @@
 import useEffectOnce from './useEffectOnce';
 import useMethods from './useMethods';
 import useMount from './useMount';
+import useToggle from './useToggle';
 import useUpdate from './useUpdate';
 import useWindowSize from './useWindowSize';
 
@@ -14,6 +15,7 @@ export default {
   useEffectOnce,
   useMethods,
   useMount,
+  useToggle,
   useUpdate,
   useWindowSize,
 };
