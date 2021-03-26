@@ -17,11 +17,10 @@ jobs:
       - name: Publish
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 12
+          registry-url: https://registry.npmjs.org
       - run: yarn
       - run: yarn build:all
-      - run: npm login
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
