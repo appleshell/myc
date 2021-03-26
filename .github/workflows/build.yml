@@ -14,19 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install
-        run: |
-          yarn
-
-      - name: build-all
-        run: |
-          yarn build:all
-
       - name: Publish
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: yarn build:all
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
