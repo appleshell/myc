@@ -1,6 +1,7 @@
 {
   "name": "my-component-doc",
   "version": "1.0.8",
+  "author": "appleshell",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
