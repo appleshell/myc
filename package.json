@@ -1,91 +1,79 @@
 {
-  "name": "my-component-doc",
-  "version": "1.0.8",
-  "author": "appleshell",
+  "name": "myc",
+  "version": "0.0.1",
+  "description": "A react library developed with dumi",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "dumi dev",
+    "start": "pnpm run dev",
+    "dev": "dumi dev",
+    "build": "father build",
+    "build:watch": "father dev",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
-    "build": "father-build",
-    "build:all": "yarn clean && yarn build:cjs && yarn build:es && yarn build:cp",
-    "build:cjs": "cross-env babel --config-file ./.babelrc.js src --out-dir lib --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir lib",
-    "build:es": "cross-env BABEL_ENV=es babel --config-file ./.babelrc.js src --out-dir es --ignore **/.umi/*,**/demo/* --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json --outDir es",
-    "build:cp": "cpy **/*.scss ../lib --cwd=src --parents && cpy **/*.scss ../es --cwd=src --parents ",
-    "clean": "rimraf lib && rimraf es",
-    "deploy": "npm run docs:build && npm run docs:deploy",
-    "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,scss,md,json}\"",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage",
-    "changelog": "conventional-changelog -p angular -i  CHANGELOG.md -s -r 0"
+    "prepare": "husky install && dumi setup",
+    "doctor": "father doctor",
+    "lint": "npm run lint:es && npm run lint:css",
+    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "prepublishOnly": "father doctor && npm run build"
   },
-  "main": "lib/index",
-  "module": "es/index",
-  "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "authors": [],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix",
       "prettier --write"
     ],
-    "*.ts?(x)": [
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
       "prettier --parser=typescript --write"
     ]
   },
-  "files": [
-    "es",
-    "lib"
-  ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
-  "dependencies": {
-    "@types/classnames": "^2.2.10",
-    "classnames": "^2.2.6",
-    "commitizen": "^4.1.2",
-    "cross-env": "^7.0.2"
+    "access": "public"
   },
   "peerDependencies": {
     "antd": ">=4.0.0",
-    "moment": "*",
-    "react": ">=16.9.0"
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
-    "@babel/plugin-proposal-numeric-separator": "^7.10.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.10.4",
-    "@babel/plugin-syntax-import-meta": "^7.10.4",
-    "@babel/plugin-syntax-numeric-separator": "^7.10.4",
-    "@babel/plugin-transform-runtime": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@umijs/plugin-sass": "^1.1.1",
-    "@umijs/preset-react": "1.x",
-    "@umijs/test": "^3.0.5",
-    "babel-loader": "^8.1.0",
-    "conventional-changelog": "^3.1.21",
-    "conventional-changelog-cli": "^2.0.34",
-    "cpy-cli": "^3.1.1",
-    "cz-conventional-changelog": "^3.2.0",
-    "dumi": "^1.0.9",
-    "father-build": "^1.17.2",
-    "gh-pages": "^3.0.0",
-    "jest": "^26.4.2",
-    "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.2",
-    "yorkie": "^2.0.0"
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/lodash": "^4.14.202",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@umijs/lint": "^4.0.0",
+    "dayjs": "^1.11.10",
+    "dumi": "^2.2.13",
+    "eslint": "^8.23.0",
+    "father": "^4.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "stylelint": "^14.9.1"
   },
-  "resolutions": {
-    "remark": "12"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "lodash": "^4.17.21"
   }
 }
