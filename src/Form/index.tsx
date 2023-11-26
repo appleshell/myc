@@ -159,7 +159,6 @@ const InternalForm: ForwardRefRenderFunction<FormInstance, FormPorps> = (
 
   const onValuesChange = (changeValues: Store, values: Store) => {
     forceUpdate();
-    console.log('fsfsfsfsf');
     if (isFunc(onValuesChangeInternal)) {
       onValuesChangeInternal(changeValues, values);
     }
